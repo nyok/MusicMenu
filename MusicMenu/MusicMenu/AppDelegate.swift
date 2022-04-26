@@ -116,6 +116,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc
     func infoTrack() {
+        Thread.sleep(forTimeInterval: 0.3)
         if self.music.isRunning && self.spotify.isRunning {
             switch selectApp {
             case "spotify":
