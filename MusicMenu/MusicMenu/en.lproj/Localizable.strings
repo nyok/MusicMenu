@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  MusicMenu
+*/
+
+"menuTextCopy" = "Copy title";
+"menuTextSearch" = "Search with Google";
+"menuTextShowTitle" = "Show track titles";
+"menuTextQuit" = "Quit";

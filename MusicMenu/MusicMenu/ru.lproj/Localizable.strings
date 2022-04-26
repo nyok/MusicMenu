@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  MusicMenu
+*/
+
+"menuTextCopy" = "Скопировать";
+"menuTextSearch" = "Искать в Google";
+"menuTextShowTitle" = "Показать названия треков";
+"menuTextQuit" = "Выход";
