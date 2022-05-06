@@ -5,6 +5,7 @@
 
 import Cocoa
 import ScriptingBridge
+import LaunchAtLogin
 
 @objc public protocol SBObjectProtocol: NSObjectProtocol {
     func get() -> Any!
@@ -19,10 +20,10 @@ import ScriptingBridge
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    let userDefaults = UserDefaults.standard
+    
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
     let font = NSFont(name: "Helvetica", size: 12)
-    
-    let defaults = UserDefaults.standard
     
     let iconNone = NSImage(named:NSImage.Name("IconNone"))
     let iconPlay = NSImage(named:NSImage.Name("IconPlay"))
@@ -38,7 +39,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var trackMenuItem: NSMenuItem!
     @IBOutlet weak var copyMenuItem: NSMenuItem!
     @IBOutlet weak var searchMenuItem: NSMenuItem!
+    @IBOutlet weak var settingsMenuItem: NSMenuItem!
     @IBOutlet weak var showTitleMenuItem: NSMenuItem!
+    @IBOutlet weak var launchAtLoginMenuItem: NSMenuItem!
     @IBOutlet weak var quitMenuItem: NSMenuItem!
     
     @IBAction func copyClicked(_ sender: NSMenuItem) {
@@ -59,16 +62,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func showTitleClicked(_ sender: NSMenuItem) {
         sender.state = sender.state == .on ? .off : .on
-        defaults.set(sender.state, forKey: "showTitleMenuValue")
+        userDefaults.set(sender.state, forKey: "showTitleMenuValue")
         infoTrack()
     }
-    
+
+    @IBAction func launchAtLoginClicked(_ sender: NSMenuItem) {
+        sender.state = sender.state == .on ? .off : .on
+        if sender.state == .on {
+            LaunchAtLogin.isEnabled = true
+        } else {
+            LaunchAtLogin.isEnabled = false
+        }
+    }
+
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         NSApp.terminate(self)
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        defaults.register(defaults: ["showTitleMenuValue" : 0])
+        userDefaults.register(defaults: ["showTitleMenuValue": true])
         createStatusMenu()
         infoTrack()
         DistributedNotificationCenter.default().addObserver(self, selector: #selector(self.playbackStateChangedMusic(_:)), name: NSNotification.Name(rawValue: "com.apple.iTunes.playerInfo"), object: nil)
@@ -90,15 +102,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         trackMenuItem.isHidden = true
         copyMenuItem.isHidden = true
         searchMenuItem.isHidden = true
-        showTitleMenuItem.isHidden = true
-        if defaults.bool(forKey: "showTitleMenuValue") {
+        if userDefaults.bool(forKey: "showTitleMenuValue") {
             showTitleMenuItem.state = .on
         } else {
             showTitleMenuItem.state = .off
         }
+        if LaunchAtLogin.isEnabled {
+            launchAtLoginMenuItem.state = .on
+        } else {
+            launchAtLoginMenuItem.state = .off
+        }
         copyMenuItem.title = NSLocalizedString("menuTextCopy", comment: "")
         searchMenuItem.title = NSLocalizedString("menuTextSearch", comment: "")
+        settingsMenuItem.title = NSLocalizedString("menuTextSettings", comment: "")
         showTitleMenuItem.title = NSLocalizedString("menuTextShowTitle", comment: "")
+        launchAtLoginMenuItem.title = NSLocalizedString("menuTextLaunchAtLogin", comment: "")
         quitMenuItem.title = NSLocalizedString("menuTextQuit", comment: "")
     }
     
@@ -202,7 +220,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         trackMenuItem.isHidden = false
         copyMenuItem.isHidden = false
         searchMenuItem.isHidden = false
-        showTitleMenuItem.isHidden = false
         statusItem.button?.image = iconPlay
     }
     func createMenuTitlePause(trackMenuArtist:String,trackMenuName:String) {
@@ -223,7 +240,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         trackMenuItem.isHidden = false
         copyMenuItem.isHidden = false
         searchMenuItem.isHidden = false
-        showTitleMenuItem.isHidden = false
         statusItem.button?.image = iconPause
     }
     
@@ -233,7 +249,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         trackMenuItem.isHidden = true
         copyMenuItem.isHidden = true
         searchMenuItem.isHidden = true
-        showTitleMenuItem.isHidden = true
         statusItem.button?.image = iconNone
     }
 }

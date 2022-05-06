@@ -5,5 +5,7 @@
 
 "menuTextCopy" = "Copy title";
 "menuTextSearch" = "Search with Google";
+"menuTextSettings" = "Settings";
 "menuTextShowTitle" = "Show track titles";
+"menuTextLaunchAtLogin" = "Launch at login";
 "menuTextQuit" = "Quit";

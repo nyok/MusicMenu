@@ -676,8 +676,10 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MusicMenu" customModuleProvider="target">
                     <connections>
                         <outlet property="copyMenuItem" destination="ElR-ut-djt" id="BaZ-xg-SKX"/>
+                        <outlet property="launchAtLoginMenuItem" destination="nbz-Km-v9S" id="gWs-70-hLq"/>
                         <outlet property="quitMenuItem" destination="pyh-fd-agq" id="44H-1Z-fW8"/>
                         <outlet property="searchMenuItem" destination="Tgn-a8-HCa" id="N8j-Ba-pBR"/>
+                        <outlet property="settingsMenuItem" destination="7oR-1U-o6y" id="TPU-ks-xfW"/>
                         <outlet property="showTitleMenuItem" destination="2BW-iY-3bJ" id="1I8-6N-faL"/>
                         <outlet property="statusMenu" destination="SfQ-pq-0t3" id="Pg6-y2-Vmf"/>
                         <outlet property="trackMenuItem" destination="4Qi-Ut-gYm" id="2AE-mz-WTB"/>
@@ -702,11 +704,24 @@
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="12v-Dn-UTa"/>
-                        <menuItem title="showTitleMenuItem" id="2BW-iY-3bJ">
+                        <menuItem title="settingsMenuItem" id="7oR-1U-o6y">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="showTitleClicked:" target="Voe-Tx-rLC" id="4vk-Dy-5r5"/>
-                            </connections>
+                            <menu key="submenu" title="settingsMenuItem" id="c3B-Yf-E2I">
+                                <items>
+                                    <menuItem title="showTitleMenuItem" id="2BW-iY-3bJ">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="showTitleClicked:" target="Voe-Tx-rLC" id="4vk-Dy-5r5"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="launchAtLoginMenuItem" id="nbz-Km-v9S">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="launchAtLoginClicked:" target="Voe-Tx-rLC" id="qXO-m6-U04"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="fsx-Np-xha"/>
                         <menuItem title="quitMenuItem" keyEquivalent="q" id="pyh-fd-agq">

@@ -4,7 +4,5 @@
 <dict>
 	<key>LSUIElement</key>
 	<true/>
-	<key>NSAppleEventsUsageDescription</key>
-	<string>Allow MusicMenu get information from music apps</string>
 </dict>
 </plist>

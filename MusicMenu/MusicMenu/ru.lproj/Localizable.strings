@@ -5,5 +5,7 @@
 
 "menuTextCopy" = "Скопировать";
 "menuTextSearch" = "Искать в Google";
+"menuTextSettings" = "Настройки";
 "menuTextShowTitle" = "Показать названия треков";
+"menuTextLaunchAtLogin" = "Запускать при старте";
 "menuTextQuit" = "Выход";

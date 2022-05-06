@@ -13,6 +13,7 @@
 		5739A2C528173BFB00CA85D4 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739A2C428173BFB00CA85D4 /* Spotify.swift */; };
 		5739A2C728173C0100CA85D4 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739A2C628173C0100CA85D4 /* Music.swift */; };
 		575AD67728173CFF00DDF2EC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 575AD67928173CFF00DDF2EC /* Localizable.strings */; };
+		5775E5B02822F5F40058906E /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5775E5AF2822F5F40058906E /* LaunchAtLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5775E5B02822F5F40058906E /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +82,16 @@
 				5730E020281739F70047332A /* Sources */,
 				5730E021281739F70047332A /* Frameworks */,
 				5730E022281739F70047332A /* Resources */,
+				5775E5B12822F6080058906E /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = MusicMenu;
+			packageProductDependencies = (
+				5775E5AF2822F5F40058906E /* LaunchAtLogin */,
+			);
 			productName = MusicMenu;
 			productReference = 5730E024281739F70047332A /* MusicMenu.app */;
 			productType = "com.apple.product-type.application";
@@ -115,6 +121,9 @@
 				ru,
 			);
 			mainGroup = 5730E01B281739F70047332A;
+			packageReferences = (
+				5775E5AE2822F5F40058906E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+			);
 			productRefGroup = 5730E025281739F70047332A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -136,6 +145,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5775E5B12822F6080058906E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5730E020281739F70047332A /* Sources */ = {
@@ -297,6 +326,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MusicMenu/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Allow MusicMenu get information from music apps";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -304,7 +335,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nyok.MusicMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -323,6 +354,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MusicMenu/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Allow MusicMenu get information from music apps";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -330,7 +363,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nyok.MusicMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -360,6 +393,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5775E5AE2822F5F40058906E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5775E5AF2822F5F40058906E /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5775E5AE2822F5F40058906E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5730E01C281739F70047332A /* Project object */;
 }
