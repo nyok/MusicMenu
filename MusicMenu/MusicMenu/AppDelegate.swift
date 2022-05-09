@@ -55,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var allowedQueryParamAndKey = NSCharacterSet.urlQueryAllowed
         allowedQueryParamAndKey.remove(charactersIn: ";/?:@&=+$, ")
         let encodetrackMenu = trackMenu.addingPercentEncoding(withAllowedCharacters: allowedQueryParamAndKey)!
-        let strURL = "https://www.google.ru/search?q=" + encodetrackMenu
+        let strURL = "https://www.google.com/search?q=" + encodetrackMenu
         let url = URL(string: strURL)!
         NSWorkspace.shared.open(url)
     }
